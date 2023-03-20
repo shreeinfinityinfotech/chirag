@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 void main() {
@@ -16,7 +17,6 @@ class Myapp extends StatelessWidget {
     );
   }
 }
-
 class ColumWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,6 @@ class ColumWidget extends StatelessWidget {
     );
   }
 }
-
 class nyAppbar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
@@ -38,27 +37,38 @@ class nyAppbar extends StatelessWidget with PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
-
 class ContainerDemo extends StatelessWidget {
   const ContainerDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+        return Container(
+          color: Colors.orange,
+          child: Column(
+          children: [
       // this widget is text Create Widget and first of row widget..
-      SizedBox(
-    height: 10,
+      Flexible(
+        flex: -1,
+        fit: FlexFit.tight,
+        child: SizedBox(
+            height: 10,
+        ),
       ),
-      RowOfText(),
-      RowOfBoxWidget(),
-      SizedBox(
-    height: 10,
-      ),
-      RowOfimageWidget()
-    ]);
+      Flexible(
+        flex: -1,
+        fit: FlexFit.tight,
+          child: RowOfText()),
+      Flexible(
+        flex: -1,
+        fit: FlexFit.tight,
+          child: RowOfBoxWidget()),
+
+      // ColumOftable()
+      // RowOfimageWidget()
+    ]),
+        );
   }
 }
-
 class RowOfText extends StatelessWidget {
   const RowOfText({Key? key}) : super(key: key);
   @override
@@ -69,7 +79,6 @@ class RowOfText extends StatelessWidget {
     );
   }
 }
-
 class RowOfBoxWidget extends StatelessWidget {
   const RowOfBoxWidget({Key? key}) : super(key: key);
 
@@ -78,7 +87,8 @@ class RowOfBoxWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Expanded(
+        Flexible(
+          fit: FlexFit.tight,
           child: Container(
             width: 100,
             height: 100,
@@ -88,7 +98,10 @@ class RowOfBoxWidget extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
-                  child: Text("Red",textAlign: TextAlign.center,),
+                  child: Text(
+                    "Red",
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
@@ -100,10 +113,12 @@ class RowOfBoxWidget extends StatelessWidget {
                       },
                       child: Text("click"),
                       style: ButtonStyle(
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  side: BorderSide(color: Colors.yellow))))),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side:
+                                          BorderSide(color: Colors.yellow))))),
                 )
               ],
             ),
@@ -111,68 +126,113 @@ class RowOfBoxWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10), color: Colors.red),
           ),
         ),
-        Container(
-          width: 100,
-          height: 100,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Text("Green",textAlign: TextAlign.center,),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 15),
-                child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text("click"),
-                    style: ButtonStyle(
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                side: BorderSide(color: Colors.red))))),
-              )
-            ],
-          ),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10), color: Colors.green),
+        SizedBox(
+          width: 10,
         ),
-        Container(
-          width: 100,
-          height: 100,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Text(
-                  "Grey",
-                  textAlign: TextAlign.center,
+        Flexible(
+          fit: FlexFit.tight,          child: Container(
+            width: 100,
+            height: 100,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Text(
+                    "Green",
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 15),
-                child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text("click"),
-                    style: ButtonStyle(
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                side: BorderSide(color: Colors.white))))),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text("click"),
+                      style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side: BorderSide(color: Colors.red))))),
+                )
+              ],
+            ),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10), color: Colors.green),
           ),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10), color: Colors.grey),
+        ),
+        Flexible(
+          fit: FlexFit.tight,          child: Container(
+            width: 100,
+            height: 100,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Text(
+                    "Grey",
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text("click"),
+                      style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side: BorderSide(color: Colors.white))))),
+                )
+              ],
+            ),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10), color: Colors.grey),
+          ),
+        ),
+        Flexible(
+          fit: FlexFit.tight,
+          child: Container(
+            width: 100,
+            height: 100,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Text(
+                    "blue",
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text("click"),
+                      style: ButtonStyle(
+                          shape:
+                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  side: BorderSide(color: Colors.white))))),
+                )
+              ],
+            ),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10), color: Colors.blue),
+          ),
         ),
       ],
     );
   }
 }
-
 class RowOfimageWidget extends StatelessWidget {
   const RowOfimageWidget({Key? key}) : super(key: key);
 
@@ -181,19 +241,50 @@ class RowOfimageWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Container(
-            width: 300, height: 100, child: Image.asset('assets/images/b2.jpg'))
+        Flexible(
+            child: ClipRect(
+          child: Align(
+            alignment: Alignment.center,
+            heightFactor: 0.4,
+            widthFactor: 0.9,
+            child: Image.asset('assets/images/b2.jpg'),
+          ),
+        ))
       ],
     );
   }
 }
+class ColumOftable extends StatelessWidget {
+  const ColumOftable({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+    color: Colors.green,
+    width: 200,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+              Container(
+                color: Colors.blue,
+                width: 100,
+                height: 100,
+              )
+
+        ],
+      ),
+    );
+  }
+}
 Dialog leadDialog = Dialog(
   child: Container(
     height: 20.0,
     width: 20.0,
     color: Colors.white,
-    child: Text('hey', textAlign: TextAlign.center,),
-
+    child: Text(
+      'hey',
+      textAlign: TextAlign.center,
+    ),
   ),
 );
