@@ -21,15 +21,30 @@ class CircleavtarExcample extends StatelessWidget {
         appBar: AppBar(
           title: Text('Material App Bar'),
         ),
-        body: Center(
-          child: CircleAvatar(
-            radius: 100,
-            backgroundColor: Colors.red,
-              child: CircleAvatar(
-                radius: 95,
-                backgroundImage: NetworkImage('https://5.imimg.com/data5/SELLER/Default/2021/8/YY/IE/JK/113884685/2-500x500.jpeg'),
+        body: Column(
+          children: [
+            Container(
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.red,
+                      child: CircleAvatar(
+                        radius: 95,
+                        backgroundImage: NetworkImage('https://5.imimg.com/data5/SELLER/Default/2021/8/YY/IE/JK/113884685/2-500x500.jpeg'),
+                      ),
+                  ),
+                  Flexible(
+                    child: Container(
+                      color: Colors.red,
+                      height: 80,
+                    ),
+                  ),
+
+                ],
               ),
-          )
+            ),
+          ],
         ));
   }
 }
