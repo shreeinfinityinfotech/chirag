@@ -20,7 +20,7 @@ class ScrollWidgetExample extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         /*reverse: true,*/
-        /*physics: BouncingScrollPhysics(),*/
+        // physics: BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
