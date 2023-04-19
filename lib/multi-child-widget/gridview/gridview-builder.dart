@@ -26,7 +26,7 @@ class GridViewExample extends StatelessWidget {
       body: GridView.builder(
         itemCount: list.length,
         gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
         itemBuilder: (context, index) {
           return Container(
             color: Colors.amber[list[index]],
