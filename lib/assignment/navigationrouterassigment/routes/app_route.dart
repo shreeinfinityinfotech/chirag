@@ -11,9 +11,9 @@ class Approute{
   static Route? generateRouter(RouteSettings settings){
    if(settings.name == firstScreen){
    } else if(settings.name == secondScreen){
-     return MaterialPageRoute(builder: (context) => SecondScreenRoute(),settings: settings);
+     return MaterialPageRoute(builder: (context) => const SecondScreenRoute(),settings: settings);
    }else if(settings.name == thirdScreen){
-     return MaterialPageRoute(builder: (context) => ThirdScreenRoute(),settings: settings);
+     return MaterialPageRoute(builder: (context) => const ThirdScreenRoute(),settings: settings);
 
    }
    return null;
